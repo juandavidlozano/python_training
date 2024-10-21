@@ -1,3 +1,4 @@
+
 # Python Basics Cheat Sheet
 
 ## 1. Variables and Data Types
@@ -58,7 +59,45 @@ print(f"Hello, {name}!")
 print("Hello, World!")
 ```
 
-## 3. String Operations
+## 3. Common Python Functions
+
+### `len()`
+Returns the length (number of items) of an object.
+```python
+s = "Python"
+print(len(s))  # 6
+```
+
+### `max()` and `min()`
+Returns the largest and smallest item, respectively.
+```python
+numbers = [1, 2, 3, 4]
+print(max(numbers))  # 4
+print(min(numbers))  # 1
+```
+
+### `sum()`
+Returns the sum of all items in an iterable (like a list).
+```python
+numbers = [1, 2, 3, 4]
+print(sum(numbers))  # 10
+```
+
+### `sorted()`
+Returns a sorted version of the iterable.
+```python
+numbers = [4, 1, 3, 2]
+print(sorted(numbers))  # [1, 2, 3, 4]
+```
+
+### `type()`
+Returns the type of an object.
+```python
+x = 5
+print(type(x))  # <class 'int'>
+```
+
+## 4. String Operations
 
 ### Common String Methods:
 ```python
@@ -74,7 +113,7 @@ print(string.replace("Python", "World"))  # 'Hello, World!'
 print(string.find("Python"))   # 7
 ```
 
-## 4. List Operations
+## 5. List Operations
 
 ### Creating and Accessing Lists:
 ```python
@@ -96,7 +135,7 @@ numbers.sort()   # [1, 3, 5, 9]
 numbers.reverse()  # [9, 5, 3, 1]
 ```
 
-## 5. Tuples
+## 6. Tuples
 
 ### Creating Tuples:
 ```python
@@ -109,7 +148,7 @@ print(my_tuple[0])  # 1
 # Tuples are immutable; you cannot change elements
 ```
 
-## 6. Dictionaries
+## 7. Dictionaries
 
 ### Creating and Accessing Dictionaries:
 ```python
@@ -129,7 +168,7 @@ print(person.keys())   # dict_keys(['name', 'age', 'city'])
 print(person.values()) # dict_values(['Alice', 30, 'New York'])
 ```
 
-## 7. Type Conversion Functions
+## 8. Type Conversion Functions
 ```python
 int("10")      # Converts string to integer
 float("10.5")  # Converts string to float
@@ -137,7 +176,7 @@ str(100)       # Converts integer to string
 list("abc")    # Converts string to list ['a', 'b', 'c']
 ```
 
-## 8. Type Checking
+## 9. Type Checking
 ```python
 type(10)         # <class 'int'>
 type(10.5)       # <class 'float'>
@@ -145,7 +184,7 @@ type([1, 2, 3])  # <class 'list'>
 type({"key": 1}) # <class 'dict'>
 ```
 
-## 9. Arithmetic Operators
+## 10. Arithmetic Operators
 ```python
 # Addition, subtraction, multiplication, division, and modulus
 x = 10
@@ -159,7 +198,7 @@ print(x % y)  # 1 (remainder)
 print(x ** y) # 1000 (exponentiation)
 ```
 
-## 10. Comparison and Logical Operators
+## 11. Comparison and Logical Operators
 
 ### Comparison Operators:
 ```python
@@ -184,7 +223,7 @@ print(x or y)   # True
 print(not x)    # False
 ```
 
-## 11. Python Ranges
+## 12. Python Ranges
 ```python
 range(5)         # Creates range from 0 to 4
 list(range(5))   # [0, 1, 2, 3, 4]
