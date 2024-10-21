@@ -148,6 +148,18 @@ print(my_tuple[0])  # 1
 # Tuples are immutable; you cannot change elements
 ```
 
+### Swapping Variables using Tuple Unpacking:
+```python
+a = 5
+b = 10
+
+# Swapping variables
+a, b = b, a
+
+print(a)  # 10
+print(b)  # 5
+```
+
 ## 7. Dictionaries
 
 ### Creating and Accessing Dictionaries:
@@ -294,3 +306,176 @@ list(range(1, 10, 2))  # [1, 3, 5, 7, 9]
 - **Pythonic Code**: Learn to write clean and efficient code using Python idioms like list comprehensions and dictionary comprehensions.
 - **Avoid Over-complicating**: When solving problems, first aim for clarity and simplicity.
 
+## Best Practices for Python Code
+
+### 1. Variable Scope
+
+**Scope** refers to the region in a program where a variable is accessible. Understanding scope is crucial to avoid unexpected behavior, especially in larger programs.
+
+#### **Local Variables:**
+Local variables are defined inside a function and can only be used within that function.
+
+```python
+def my_function():
+    x = 10  # Local variable
+    print(x)
+
+my_function()
+print(x)  # This will cause an error since x is not accessible outside the function.
+```
+
+#### **Global Variables:**
+Global variables are defined outside of functions and are accessible throughout the entire program.
+
+```python
+x = 10  # Global variable
+
+def my_function():
+    print(x)  # Accessing global variable inside a function
+
+my_function()
+print(x)  # Global variable can be accessed outside the function too.
+```
+
+#### **Modifying Global Variables Inside Functions:**
+To modify a global variable inside a function, you must explicitly declare it using the `global` keyword.
+
+```python
+x = 10
+
+def modify_global():
+    global x
+    x = 20
+
+modify_global()
+print(x)  # 20, because the global variable was modified inside the function.
+```
+
+#### **Nonlocal Variables (In Nested Functions):**
+If you want to modify a variable in a nested (enclosing) function, use the `nonlocal` keyword.
+
+```python
+def outer_function():
+    x = 10
+
+    def inner_function():
+        nonlocal x  # Modifies the variable from the outer function
+        x = 20
+
+    inner_function()
+    print(x)  # 20
+
+outer_function()
+```
+
+---
+
+### 2. Pythonic Code
+
+Python encourages writing code that is **clear**, **concise**, and **efficient**. Below are some techniques that make code more Pythonic:
+
+#### **List Comprehensions:**
+Instead of using loops to build lists, you can use list comprehensions for a more readable and concise solution.
+
+##### Example (Using a Loop):
+```python
+squares = []
+for i in range(5):
+    squares.append(i ** 2)
+print(squares)  # [0, 1, 4, 9, 16]
+```
+
+##### Pythonic Way (Using List Comprehension):
+```python
+squares = [i ** 2 for i in range(5)]
+print(squares)  # [0, 1, 4, 9, 16]
+```
+
+#### **Dictionary Comprehensions:**
+Similar to list comprehensions, Python allows comprehensions for dictionaries too.
+
+##### Example (Using a Loop):
+```python
+numbers = [1, 2, 3]
+squares = {}
+for n in numbers:
+    squares[n] = n ** 2
+print(squares)  # {1: 1, 2: 4, 3: 9}
+```
+
+##### Pythonic Way (Using Dictionary Comprehension):
+```python
+numbers = [1, 2, 3]
+squares = {n: n ** 2 for n in numbers}
+print(squares)  # {1: 1, 2: 4, 3: 9}
+```
+
+#### **Using Generators:**
+Generators are memory-efficient and produce items one at a time, only as needed. They are written using `()` instead of `[]` for list comprehensions.
+
+##### Example (Using a List):
+```python
+numbers = [i for i in range(1000000)]  # Creates a list of one million elements (takes a lot of memory)
+```
+
+##### Pythonic Way (Using a Generator):
+```python
+numbers = (i for i in range(1000000))  # Generator that produces one element at a time (more memory efficient)
+```
+
+#### **Ternary Operators:**
+In Python, you can write conditional statements in a single line using a ternary operator.
+
+##### Example (Standard Conditional):
+```python
+x = 10
+if x > 5:
+    result = "Greater"
+else:
+    result = "Smaller"
+```
+
+##### Pythonic Way (Using Ternary Operator):
+```python
+x = 10
+result = "Greater" if x > 5 else "Smaller"
+```
+
+---
+
+### 3. Avoiding Redundancies
+
+Python has built-in functions like `any()`, `all()`, and `zip()` that help you avoid writing redundant loops.
+
+#### **Using `any()` and `all()` for Conditions:**
+Instead of checking conditions with multiple loops or if-statements, `any()` returns `True` if **any** of the elements are `True`, while `all()` returns `True` if **all** elements are `True`.
+
+##### Example (Using a Loop):
+```python
+numbers = [1, 2, 3, 0]
+for n in numbers:
+    if n == 0:
+        print(True)
+        break
+```
+
+##### Pythonic Way (Using `any()`):
+```python
+numbers = [1, 2, 3, 0]
+print(any(n == 0 for n in numbers))  # True
+```
+
+#### **Using `zip()` to Loop Over Two Lists Simultaneously:**
+When you need to loop over two or more lists at the same time, `zip()` can help.
+
+```python
+names = ["Alice", "Bob", "Charlie"]
+ages = [25, 30, 35]
+
+for name, age in zip(names, ages):
+    print(f"{name} is {age} years old.")
+```
+
+---
+
+These techniques help write concise and more efficient code. Becoming comfortable with these will make your Python code more "Pythonic" and improve readability.
