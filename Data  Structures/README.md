@@ -1,178 +1,6 @@
 # Python Data Structures Cheat Sheet
 
 ## 1. Lists
-
-Lists are ordered, mutable collections of items.
-
-### Creating Lists
-```python
-my_list = [1, 2, 3, 4, 5]  # List of integers
-empty_list = []  # Empty list
-```
-
-### Accessing List Elements
-```python
-print(my_list[0])  # Access the first element (output: 1)
-print(my_list[-1])  # Access the last element (output: 5)
-```
-
-### Common List Methods
-- `append()`: Adds an element to the end of the list.
-- `extend()`: Adds multiple elements to the end of the list.
-- `insert()`: Inserts an element at a specific position.
-- `remove()`: Removes the first occurrence of a value.
-- `pop()`: Removes and returns the last element (or an element at a specific index).
-- `sort()`: Sorts the list in ascending order.
-- `reverse()`: Reverses the list.
-
-```python
-my_list.append(6)  # [1, 2, 3, 4, 5, 6]
-my_list.extend([7, 8])  # [1, 2, 3, 4, 5, 6, 7, 8]
-my_list.insert(1, 1.5)  # [1, 1.5, 2, 3, 4, 5, 6, 7, 8]
-my_list.remove(1.5)  # [1, 2, 3, 4, 5, 6, 7, 8]
-my_list.pop()  # Removes the last element, output: 8
-my_list.sort()  # [1, 2, 3, 4, 5, 6, 7]
-my_list.reverse()  # [7, 6, 5, 4, 3, 2, 1]
-```
-
-### List Slicing
-```python
-sub_list = my_list[1:4]  # Get a slice of the list, output: [6, 5, 4]
-reversed_list = my_list[::-1]  # Reverse the list using slicing, output: [1, 2, 3, 4, 5, 6, 7]
-```
-
----
-
-## 2. Dictionaries
-
-Dictionaries are collections of key-value pairs.
-
-### Creating Dictionaries
-```python
-my_dict = {"name": "Alice", "age": 25, "city": "New York"}
-empty_dict = {}  # Empty dictionary
-```
-
-### Accessing and Modifying Dictionary Elements
-```python
-print(my_dict["name"])  # Access value by key, output: 'Alice'
-my_dict["age"] = 30  # Modify value
-my_dict["country"] = "USA"  # Add new key-value pair
-```
-
-### Common Dictionary Methods
-- `get()`: Returns the value for a specified key (or a default value if the key is not found).
-- `keys()`: Returns all keys in the dictionary.
-- `values()`: Returns all values in the dictionary.
-- `items()`: Returns all key-value pairs as tuples.
-- `pop()`: Removes the key-value pair for the specified key.
-- `update()`: Updates the dictionary with key-value pairs from another dictionary or iterable.
-
-```python
-print(my_dict.get("name", "Not Found"))  # 'Alice'
-print(my_dict.keys())  # dict_keys(['name', 'age', 'city', 'country'])
-print(my_dict.values())  # dict_values(['Alice', 30, 'New York', 'USA'])
-print(my_dict.items())  # dict_items([('name', 'Alice'), ('age', 30), ('city', 'New York'), ('country', 'USA')])
-my_dict.pop("city")  # Removes 'city' key, output: 'New York'
-my_dict.update({"profession": "Engineer"})  # Adds a new key-value pair
-```
-
----
-
-## 3. Sets
-
-Sets are unordered collections of unique elements.
-
-### Creating Sets
-```python
-my_set = {1, 2, 3, 4, 5}
-empty_set = set()  # Create an empty set
-```
-
-### Common Set Operations
-- `add()`: Adds an element to the set.
-- `remove()`: Removes an element from the set.
-- `union()`: Returns a set that is the union of two sets.
-- `intersection()`: Returns a set that is the intersection of two sets.
-- `difference()`: Returns the difference between two sets.
-
-```python
-my_set.add(6)  # Adds 6 to the set
-my_set.remove(1)  # Removes 1 from the set
-another_set = {4, 5, 6, 7}
-union_set = my_set.union(another_set)  # {2, 3, 4, 5, 6, 7}
-intersection_set = my_set.intersection(another_set)  # {4, 5, 6}
-difference_set = my_set.difference(another_set)  # {2, 3}
-```
-
----
-
-## 4. Tuples
-
-Tuples are ordered, immutable collections of items.
-
-### Creating Tuples
-```python
-my_tuple = (1, 2, 3)
-single_element_tuple = (1,)  # Comma is needed for single-element tuples
-```
-
-### Tuple Packing and Unpacking
-```python
-a, b, c = my_tuple  # Tuple unpacking
-print(a, b, c)  # 1, 2, 3
-```
-
-### Immutability
-Tuples cannot be changed after creation. You cannot modify, append, or remove items from a tuple.
-
-```python
-# This will raise an error:
-# my_tuple[0] = 5  # TypeError: 'tuple' object does not support item assignment
-```
-
----
-
-## 5. Stacks, Queues, and Heaps
-
-Python’s `collections` module provides an efficient way to implement stacks and queues.
-
-### Stacks (LIFO - Last In, First Out)
-You can use a list or `collections.deque` to implement a stack.
-
-```python
-stack = [1, 2, 3]
-stack.append(4)  # Push element onto the stack
-print(stack.pop())  # Pop element, output: 4
-```
-
-### Queues (FIFO - First In, First Out)
-You can use `collections.deque` to implement a queue.
-
-```python
-from collections import deque
-
-queue = deque([1, 2, 3])
-queue.append(4)  # Add element to the queue
-print(queue.popleft())  # Remove the first element, output: 1
-```
-
-### Heaps (Priority Queue)
-Use Python's `heapq` module to implement a heap (min-heap by default).
-
-```python
-import heapq
-
-heap = [5, 7, 9, 1, 3]
-heapq.heapify(heap)  # Convert list into a heap
-heapq.heappush(heap, 4)  # Push an element onto the heap
-print(heapq.heappop(heap))  # Pop the smallest element, output: 1
-``` 
-
-
-# Python Data Structures Cheat Sheet
-
-## 1. Lists
 Lists are ordered, mutable collections of items.
 
 ### Creating Lists
@@ -330,36 +158,170 @@ print(a, b, c)  # Output: 1 2 3
 
 ---
 
-## Examples: Solving Common Problems with Data Structures
+## 5. Stacks, Queues, and Heaps
 
-### Example 1: Find the Largest Element in a List
+Python’s `collections` module provides an efficient way to implement stacks and queues.
+
+### Stacks (LIFO - Last In, First Out)
+You can use a list or `collections.deque` to implement a stack.
+
 ```python
-numbers = [3, 6, 2, 8, 1]
-max_number = max(numbers)
-print(max_number)  # Output: 8
+stack = [1, 2, 3]
+stack.append(4)  # Push element onto the stack
+print(stack.pop())  # Pop element, output: 4
 ```
 
-### Example 2: Remove Duplicates from a List
+### Queues (FIFO - First In, First Out)
+You can use `collections.deque` to implement a queue.
+
 ```python
-numbers = [1, 2, 2, 3, 4, 4, 5]
-unique_numbers = list(set(numbers))
-print(unique_numbers)  # Output: [1, 2, 3, 4, 5]
+from collections import deque
+
+queue = deque([1, 2, 3])
+queue.append(4)  # Add element to the queue
+print(queue.popleft())  # Remove the first element, output: 1
 ```
 
-### Example 3: Merge Two Dictionaries
+### Heaps (Priority Queue)
+Use Python's `heapq` module to implement a heap (min-heap by default).
+
 ```python
-dict1 = {'a': 1, 'b': 2}
-dict2 = {'b': 3, 'c': 4}
-merged_dict = {**dict1, **dict2}
-print(merged_dict)  # Output: {'a': 1, 'b': 3, 'c': 4}
+import heapq
+
+heap = [5, 7, 9, 1, 3]
+heapq.heapify(heap)  # Convert list into a heap
+heapq.heappush(heap, 4)  # Push an element onto the heap
+print(heapq.heappop(heap))  # Pop the smallest element, output: 1
 ```
 
-### Example 4: Count the Occurrences of Each Element in a List
+---
+
+## Looping Over Different Data Structures
+
+### 1. Looping Over Lists
 ```python
-numbers = [1, 2, 2, 3, 4, 4, 5]
-counts = {}
+my_list = [10, 20, 30, 40]
 
-for num in numbers:
-    counts[num] = counts.get(num, 0) + 1
+# Basic for loop
+for item in my_list:
+    print(item)
+```
 
-print(counts)  # Output
+#### Loop with Indexes using `enumerate()`
+```python
+for index, item in enumerate(my_list):
+    print(f"Index {index} has value {item}")
+```
+
+#### Using `len()` to Loop by Index
+```python
+for i in range(len(my_list)):
+    print(my_list[i])
+```
+
+---
+
+### 2. Looping Over Dictionaries
+#### Looping Over Keys
+```python
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+
+for key in my_dict:
+    print(key)
+```
+
+#### Looping Over Values
+```python
+for value in my_dict.values():
+    print(value)
+```
+
+#### Looping Over Keys and Values
+```python
+for key, value in my_dict.items():
+    print(f"{key}: {value}")
+```
+
+---
+
+### 3. Looping Over Sets
+Sets are unordered, so you can loop over them using a `for` loop, but there are no indexes.
+```python
+my_set = {1, 2, 3, 4}
+
+for item in my_set:
+    print(item)
+```
+
+---
+
+### 4. Looping Over Tuples
+Tuples are immutable, so you loop over them like lists but cannot change their contents.
+```python
+my_tuple = (1, 2, 3)
+
+for item in my_tuple:
+    print(item)
+```
+
+---
+
+### 5. Using `in` for Membership Testing
+#### Check if an Element Exists in a List
+```python
+my_list = [1, 2, 3, 4, 5]
+
+if 3 in my_list:
+    print("3 is in the list")
+```
+
+#### Check if a Key Exists in a Dictionary
+```python
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+
+if 'b' in my_dict:
+    print("Key 'b' exists in the dictionary")
+```
+
+#### Check if an Element Exists in a Set
+```python
+my_set = {1, 2, 3, 4, 5}
+
+if 2 in my_set:
+    print("2 is in the set")
+```
+
+---
+
+### 6. Using `zip()` to Loop Over Multiple Structures
+`zip()` allows you to loop over multiple structures at once, pairing elements from each one.
+
+```python
+names = ["Alice", "Bob", "Charlie"]
+scores = [85, 90, 78]
+
+for name, score in zip(names, scores):
+    print(f"{name}: {score}")
+```
+
+---
+
+### 7. Looping with `range()`
+`range()` generates a sequence of numbers and is often used to loop over a sequence by index.
+
+```python
+for i in range(5):  # Loops from 0 to 4
+    print(i)
+```
+
+---
+
+### General Tips for Looping
+1. **Use `in`**: Use `in` to check membership (whether an element is in a list, set, or dictionary).
+2. **Use `enumerate()`**: If you need both the index and value from a list, use `enumerate()` for a cleaner solution than using `len()`.
+3. **Use `.items()` for Dictionaries**: If you need both the keys and values from a dictionary, iterate using `.items()`.
+4. **Use List Comprehensions**: For simple loops that involve generating new lists, consider using **list comprehensions** for cleaner code.
+    ```python
+    squares = [x ** 2 for x in range(5)]  # [0, 1, 4, 9, 16]
+    ```
+5. **`zip()` for Parallel Iteration**: Use `zip()` when you need to loop through multiple iterables simultaneously.
