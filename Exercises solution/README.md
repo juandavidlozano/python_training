@@ -545,4 +545,448 @@
     print(reverse_dict({'a': 1, 'b': 2}))  # Output: {1: 'a', 2: 'b'}
     ```
 
+## Medium to Hard Exercises (61-100)
+
+61. **Find Frequency of Elements in List**: Write a function to find the frequency of elements in a list using a dictionary.
+   - **Reference**: Data Structures (Lists, Dictionaries)
+   ```python
+   def element_frequency(lst):
+       freq = {}
+       for elem in lst:
+           freq[elem] = freq.get(elem, 0) + 1
+       return freq
+   print(element_frequency([1, 2, 2, 3, 3, 3]))  # Output: {1: 1, 2: 2, 3: 3}
+   ```
+
+62. **Filter Even Numbers from List**: Write a function to filter out even numbers from a list.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   def filter_even(lst):
+       return [x for x in lst if x % 2 == 0]
+   print(filter_even([1, 2, 3, 4]))  # Output: [2, 4]
+   ```
+
+63. **Combine Two Lists into a Dictionary**: Write a function that takes two lists of equal length and returns a dictionary where one list is the keys and the other list is the values.
+   - **Reference**: Data Structures (Lists, Dictionaries)
+   ```python
+   def combine_lists(keys, values):
+       return dict(zip(keys, values))
+   print(combine_lists(["a", "b", "c"], [1, 2, 3]))  # Output: {'a': 1, 'b': 2, 'c': 3}
+   ```
+
+64. **Calculate Mode of a List**: Write a function to calculate the mode (most frequent element) of a list.
+   - **Reference**: Data Structures (Lists, Dictionaries)
+   ```python
+   def calculate_mode(lst):
+       frequency = {}
+       for item in lst:
+           frequency[item] = frequency.get(item, 0) + 1
+       return max(frequency, key=frequency.get)
+   print(calculate_mode([1, 2, 2, 3, 3, 3]))  # Output: 3
+   ```
+
+65. **Find All Prime Numbers in a List**: Write a function that returns all prime numbers in a list.
+   - **Reference**: Data Structures (Lists, Functions)
+   ```python
+   def is_prime(n):
+       if n < 2:
+           return False
+       for i in range(2, int(n**0.5) + 1):
+           if n % i == 0:
+               return False
+       return True
+
+   def primes_in_list(lst):
+       return [num for num in lst if is_prime(num)]
+   print(primes_in_list([1, 2, 3, 4, 5, 6, 7]))  # Output: [2, 3, 5, 7]
+   ```
+
+66. **Remove Punctuation from a String**: Write a function that removes all punctuation from a string.
+   - **Reference**: String Manipulation
+   ```python
+   import string
+
+   def remove_punctuation(s):
+       return s.translate(str.maketrans('', '', string.punctuation))
+   print(remove_punctuation("Hello, world!"))  # Output: "Hello world"
+   ```
+
+67. **Count Palindromes in a List of Strings**: Write a function to count how many palindromes are in a list of strings.
+   - **Reference**: String Manipulation, Data Structures (Lists)
+   ```python
+   def count_palindromes(lst):
+       return sum(1 for word in lst if word == word[::-1])
+   print(count_palindromes(["madam", "hello", "racecar"]))  # Output: 2
+   ```
+
+68. **Find Largest Word in a String**: Write a function that finds the largest word in a string.
+   - **Reference**: String Manipulation
+   ```python
+   def find_largest_word(s):
+       return max(s.split(), key=len)
+   print(find_largest_word("The quick brown fox"))  # Output: "quick"
+   ```
+
+69. **Find Symmetric Difference of Two Sets**: Write a function that finds the symmetric difference between two sets.
+   - **Reference**: Data Structures (Sets)
+   ```python
+   def symmetric_difference(set1, set2):
+       return set1.symmetric_difference(set2)
+   print(symmetric_difference({1, 2, 3}, {2, 3, 4}))  # Output: {1, 4}
+   ```
+
+70. **Transpose a Matrix**: Write a function that transposes a 2D matrix (a list of lists).
+   - **Reference**: Data Structures (Lists)
+   ```python
+   def transpose_matrix(matrix):
+       return list(map(list, zip(*matrix)))
+   print(transpose_matrix([[1, 2], [3, 4], [5, 6]]))  # Output: [[1, 3, 5], [2, 4, 6]]
+   ```
+
+---
+
+## Hard Exercises (71-100)
+
+71. **Count Unique Characters in a String**: Write a function to count the number of unique characters in a string.
+   - **Reference**: String Manipulation, Sets
+   ```python
+   def count_unique_characters(s):
+       return len(set(s))
+   print(count_unique_characters("hello"))  # Output: 4
+   ```
+
+72. **Find Greatest Common Divisor**: Write a function to find the greatest common divisor (GCD) of two numbers.
+   - **Reference**: Functions
+   ```python
+   def gcd(a, b):
+       while b:
+           a, b = b, a % b
+       return a
+   print(gcd(48, 18))  # Output: 6
+   ```
+
+73. **Count Pairs of Elements with Given Sum**: Write a function to count pairs of elements in a list that add up to a given sum.
+   - **Reference**: Data Structures (Lists, Functions)
+   ```python
+   def count_pairs_with_sum(lst, target):
+       count = 0
+       seen = set()
+       for num in lst:
+           if target - num in seen:
+               count += 1
+           seen.add(num)
+       return count
+   print(count_pairs_with_sum([1, 2, 3, 4, 3], 6))  # Output: 2
+   ```
+
+74. **Check if List Contains a Sublist**: Write a function to check if a list contains a given sublist.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   def contains_sublist(lst, sublist):
+       sub_len = len(sublist)
+       return any(lst[i:i + sub_len] == sublist for i in range(len(lst) - sub_len + 1))
+   print(contains_sublist([1, 2, 3, 4], [2, 3]))  # Output: True
+   ```
+
+75. **Sort Dictionary by Values**: Write a function to sort a dictionary by its values.
+   - **Reference**: Data Structures (Dictionaries)
+   ```python
+   def sort_dict_by_values(d):
+       return dict(sorted(d.items(), key=lambda item: item[1]))
+   print(sort_dict_by_values({'a': 3, 'b': 1, 'c': 2}))  # Output: {'b': 1, 'c': 2, 'a': 3}
+   ```
+
+76. **Find Unique Words in a Sentence**: Write a function to find all unique words in a sentence.
+   - **Reference**: String Manipulation, Sets
+   ```python
+   def unique_words(s):
+       return set(s.split())
+   print(unique_words("hello world hello"))  # Output: {'hello', 'world'}
+   ```
+
+77. **Rotate List by k Positions**: Write a function to rotate a list by `k` positions.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   def rotate_list(lst, k):
+       k = k % len(lst)  # Handle cases where k > len(lst)
+       return lst[-k:] + lst[:-k]
+   print(rotate_list([1, 2, 3, 4, 5], 2))  # Output: [4, 5, 1, 2, 3]
+   ```
+
+78. **Check if All Elements in List are Unique**: Write a function to check if all elements in a list are unique.
+   - **Reference**: Data Structures (Sets)
+   ```python
+   def all_unique(lst):
+       return len(lst) == len(set(lst))
+   print(all_unique([1, 2, 3, 4]))  # Output: True
+   ```
+
+79. **Calculate Median of a List**: Write a function to calculate the median of a list.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   def median(lst):
+       sorted_lst = sorted(lst)
+       mid = len(lst) // 2
+       if len(lst) % 2 == 0:
+           return (sorted_lst[mid - 1] + sorted_lst[mid]) / 2
+       return sorted_lst[mid]
+   print(median([3, 1, 4, 2]))  # Output: 2.5
+   ```
+
+80. **Find Most Frequent Character in String**: Write a function to find the most frequent character in a string.
+   - **Reference**: String Manipulation, Dictionaries
+   ```python
+   def most_frequent_char(s):
+       frequency = {}
+       for char in s:
+           frequency[char] = frequency.get(char, 0) + 1
+       return max(frequency, key=frequency.get)
+   print(most_frequent_char("hello"))  # Output: "l"
+   ```
+
+81. **Generate Fibonacci Sequence Using Generators**: Write a generator function that yields the Fibonacci sequence up to `n`.
+   - **Reference**: Python Functions, Data Structures (Generators)
+   ```python
+   def fibonacci_gen(n):
+       a, b = 0, 1
+       while n > 0:
+           yield a
+           a, b = b, a + b
+           n -= 1
+   print(list(fibonacci_gen(5)))  # Output: [0, 1, 1, 2, 3]
+   ```
+
+82. **Find Longest Common Prefix**: Write a function to find the longest common prefix among a list of strings.
+   - **Reference**: String Manipulation, Data Structures (Lists)
+   ```python
+   def longest_common_prefix(strs):
+       if not strs:
+           return ""
+       prefix = strs[0]
+       for s in strs[1:]:
+           while not s.startswith(prefix):
+               prefix = prefix[:-1]
+               if not prefix:
+                   return ""
+       return prefix
+   print(longest_common_prefix(["flower", "flow", "flight"]))  # Output: "fl"
+   ```
+
+83. **Generate Permutations of a List**: Write a function to generate all permutations of a list.
+   - **Reference**: Data Structures (Lists), Python Functions
+   ```python
+   from itertools import permutations
+
+   def generate_permutations(lst):
+       return list(permutations(lst))
+   print(generate_permutations([1, 2, 3]))  # Output: [(1, 2, 3), (1, 3, 2), ...]
+   ```
+
+84. **Count Elements Greater than k in List**: Write a function to count elements greater than `k` in a list.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   def count_greater_than(lst, k):
+       return sum(1 for x in lst if x > k)
+   print(count_greater_than([1, 2, 3, 4], 2))  # Output: 2
+   ```
+
+85. **Find Minimum in a List of Dictionaries**: Write a function to find the dictionary with the smallest value in a list of dictionaries.
+   - **Reference**: Data Structures (Dictionaries, Lists)
+   ```python
+   def min_dict_in_list(lst, key):
+       return min(lst, key=lambda x: x[key])
+   print(min_dict_in_list([{'a': 3}, {'a': 1}, {'a': 2}], 'a'))  # Output: {'a': 1}
+   ```
+
+86. **Implement Stack Using List**: Write a function to implement a stack using a list.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   class Stack:
+       def __init__(self):
+           self.stack = []
+       def push(self, item):
+           self.stack.append(item)
+       def pop(self):
+           return self.stack.pop()
+       def is_empty(self):
+           return len(self.stack) == 0
+
+   stack = Stack()
+   stack.push(1)
+   stack.push(2)
+   print(stack.pop())  # Output: 2
+   ```
+
+87. **Find Union of Multiple Sets**: Write a function that finds the union of multiple sets.
+   - **Reference**: Data Structures (Sets)
+   ```python
+   def union_of_sets(*sets):
+       return set.union(*sets)
+   print(union_of_sets({1, 2}, {2, 3}, {3, 4}))  # Output: {1, 2, 3, 4}
+   ```
+
+88. **Remove Duplicate Keys in Dictionary**: Write a function to remove duplicate keys in a dictionary and retain the last occurrence.
+   - **Reference**: Data Structures (Dictionaries)
+   ```python
+   def remove_duplicate_keys(d):
+       return {k: v for k, v in reversed(list(d.items()))}
+   print(remove_duplicate_keys({'a': 1, 'b': 2, 'a': 3}))  # Output: {'b': 2, 'a': 3}
+   ```
+
+89. **Find Longest Palindromic Substring**: Write a function to find the longest palindromic substring in a given string.
+   - **Reference**: String Manipulation, Python Functions
+   ```python
+   def longest_palindromic_substring(s):
+       longest = ""
+       for i in range(len(s)):
+           for j in range(i, len(s)):
+               substring = s[i:j+1]
+               if substring == substring[::-1] and len(substring) > len(longest):
+                   longest = substring
+       return longest
+   print(longest_palindromic_substring("babad"))  # Output: "bab"
+   ```
+
+90. **Implement Queue Using List**: Write a function to implement a queue using a list.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   class Queue:
+       def __init__(self):
+           self.queue = []
+       def enqueue(self, item):
+           self.queue.append(item)
+       def dequeue(self):
+           return self.queue.pop(0) if not self.is_empty() else None
+       def is_empty(self):
+           return len(self.queue) == 0
+
+   queue = Queue()
+   queue.enqueue(1)
+   queue.enqueue(2)
+   print(queue.dequeue())  # Output: 1
+   ```
+
+91. **Find Elements Common to All Lists**: Write a function to find elements that are common to all lists in a list of lists.
+   - **Reference**: Data Structures (Lists, Sets)
+   ```python
+   def common_elements_in_lists(lst_of_lsts):
+       return set.intersection(*map(set, lst_of_lsts))
+   print(common_elements_in_lists([[1, 2, 3], [2, 3, 4], [2, 5, 3]]))  # Output: {2, 3}
+   ```
+
+92. **Find All Subsets of a Set**: Write a function to generate all subsets of a given set.
+   - **Reference**: Data Structures (Sets)
+   ```python
+   from itertools import chain, combinations
+
+   def subsets(s):
+       return list(chain.from_iterable(combinations(s, r) for r in range(len(s) + 1)))
+   print(subsets({1, 2, 3}))  # Output: [(), (1,), (2,), (3,), (1, 2), (1, 3), ...]
+   ```
+
+93. **Merge K Sorted Lists**: Write a function to merge `k` sorted lists into a single sorted list.
+   - **Reference**: Data Structures (Lists)
+   ```python
+   import heapq
+
+   def merge_k_sorted_lists(lists):
+       return list(heapq.merge(*lists))
+   print(merge_k_sorted_lists([[1, 4, 5], [1, 3, 4], [2, 6]]))  # Output: [1, 1, 2, 3, 4, 4, 5, 6]
+   ```
+
+94. **Find Second Most Frequent Character in String**: Write a function to find the second most frequent character in a string.
+   - **Reference**: String Manipulation, Dictionaries
+   ```python
+   def second_most_frequent_char(s):
+       frequency = {}
+       for char in s:
+           frequency[char] = frequency.get(char, 0) + 1
+       sorted_freq = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
+       return sorted_freq[1][0] if len(sorted_freq) > 1 else None
+   print(second_most_frequent_char("hello"))  # Output: "e"
+   ```
+
+95. **Create Balanced Parentheses**: Write a function to create all combinations of balanced parentheses for `n` pairs.
+   - **Reference**: Python Functions, Recursion
+   ```python
+   def generate_parentheses(n):
+       def backtrack(s='', left=0, right=0):
+           if len(s) == 2 * n:
+               result.append(s)
+               return
+           if left < n:
+               backtrack(s + '(', left + 1, right)
+           if right < left:
+               backtrack(s + ')', left, right + 1)
+       result = []
+       backtrack()
+       return result
+   print(generate_parentheses(3))  # Output: ['((()))', '(()())', '(())()', '()(())', '()()()']
+   ```
+
+96. **Find Missing Elements in Range**: Write a function to find all the missing elements in a range from a list of numbers.
+   - **Reference**: Data Structures (Lists), Python Functions
+   ```python
+   def find_missing_elements(lst, start, end):
+       return set(range(start, end + 1)) - set(lst)
+   print(find_missing_elements([1, 2, 4, 6], 1, 6))  # Output: {3, 5}
+   ```
+
+97. **Find Subarrays with Given Sum**: Write a function to find all subarrays in a list that sum up to a given value.
+   - **Reference**: Data Structures (Lists), Python Functions
+   ```python
+   def subarrays_with_sum(lst, target):
+       result = []
+       for i in range(len(lst)):
+           current_sum = 0
+           for j in range(i, len(lst)):
+               current_sum += lst[j]
+               if current_sum == target:
+                   result.append(lst[i:j + 1])
+       return result
+   print(subarrays_with_sum([1, 2, 3, 4, 5], 5))  # Output: [[2, 3], [5]]
+   ```
+
+98. **Implement Priority Queue Using List**: Write a function to implement a priority queue using a list.
+   - **Reference**: Data Structures (Lists), Python Functions
+   ```python
+   import heapq
+
+   class PriorityQueue:
+       def __init__(self):
+           self.queue = []
+       def push(self, item):
+           heapq.heappush(self.queue, item)
+       def pop(self):
+           return heapq.heappop(self.queue) if not self.is_empty() else None
+       def is_empty(self):
+           return len(self.queue) == 0
+
+   pq = PriorityQueue()
+   pq.push((1, "Task 1"))
+   pq.push((3, "Task 3"))
+   pq.push((2, "Task 2"))
+   print(pq.pop())  # Output: (1, "Task 1")
+   ```
+
+99. **Reverse Words in a String**: Write a function to reverse the order of words in a string.
+   - **Reference**: String Manipulation, Python Functions
+   ```python
+   def reverse_words(s):
+       return ' '.join(s.split()[::-1])
+   print(reverse_words("Hello world"))  # Output: "world Hello"
+   ```
+
+100. **Count Distinct Substrings in a String**: Write a function to count all distinct substrings in a string.
+   - **Reference**: String Manipulation, Sets
+   ```python
+   def distinct_substrings(s):
+       substrings = set()
+       for i in range(len(s)):
+           for j in range(i + 1, len(s) + 1):
+               substrings.add(s[i:j])
+       return len(substrings)
+   print(distinct_substrings("abc"))  # Output: 6 (substrings: 'a', 'b', 'c', 'ab', 'bc', 'abc')
+   ```
+
 
