@@ -511,3 +511,177 @@ for i in range(len(my_list) - 1, -1, -1):
 | Loop backwards with `range()`      | `for i in range(len(lst) - 1, -1, -1)` | `5, 4, 3, 2, 1`                         |
 
 
+
+
+# Python Dictionary Cheat Sheet
+
+## 1. Basic Dictionary Operations
+
+### Creating a Dictionary
+```python
+my_dict = {1: "apple", 2: "banana", 3: "cherry"}
+```
+
+### Adding or Updating a Key-Value Pair
+```python
+my_dict[4] = "date"  # Adds a new key 4 with value "date"
+my_dict[2] = "blueberry"  # Updates the value of key 2 to "blueberry"
+```
+
+### Accessing a Value by Key
+```python
+value = my_dict[1]  # Returns "apple"
+```
+
+### Removing a Key-Value Pair
+```python
+del my_dict[3]  # Removes the key 3 and its associated value
+```
+
+---
+
+## 2. Checking for Existence of Keys
+
+### Check if a Key is in the Dictionary
+- `key in dict` checks if a key exists in the dictionary.
+```python
+if 1 in my_dict:
+    print("Key 1 is in the dictionary")
+```
+
+### Check if a Key is NOT in the Dictionary
+- `key not in dict` checks if a key does **not** exist in the dictionary.
+```python
+if 4 not in my_dict:
+    print("Key 4 is not in the dictionary")
+```
+
+> **Note**: `in` and `not in` only check keys, not values.
+
+---
+
+## 3. Checking for Values in a Dictionary
+
+### Check if a Value is in the Dictionary
+- Use `value in dict.values()` to check if a value exists.
+```python
+if "banana" in my_dict.values():
+    print("Value 'banana' is in the dictionary")
+```
+
+### Check if a Value is NOT in the Dictionary
+- Use `value not in dict.values()` to check if a value does **not** exist.
+```python
+if "fig" not in my_dict.values():
+    print("Value 'fig' is not in the dictionary")
+```
+
+---
+
+## 4. Counting Appearances of Items in a List
+
+### Using a Dictionary to Count Items in a List
+```python
+nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+count_dict = {}
+
+for num in nums:
+    if num not in count_dict:
+        count_dict[num] = 1
+    else:
+        count_dict[num] += 1
+
+print(count_dict)  # Output: {0: 2, 1: 3, 2: 2, 3: 2, 4: 1}
+```
+
+---
+
+## 5. Dictionary Methods
+
+### `dict.keys()`
+- Returns a view of all keys in the dictionary.
+```python
+keys = my_dict.keys()
+print(keys)  # Output: dict_keys([1, 2, 4])
+```
+
+### `dict.values()`
+- Returns a view of all values in the dictionary.
+```python
+values = my_dict.values()
+print(values)  # Output: dict_values(['apple', 'blueberry', 'date'])
+```
+
+### `dict.items()`
+- Returns a view of all key-value pairs as tuples.
+```python
+items = my_dict.items()
+print(items)  # Output: dict_items([(1, 'apple'), (2, 'blueberry'), (4, 'date')])
+```
+
+---
+
+## 6. Dictionary Comprehension
+
+### Creating a Dictionary from a List
+```python
+squares = {x: x*x for x in range(5)}
+print(squares)  # Output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+```
+
+---
+
+## 7. Using `collections.Counter` for Counting
+
+If you’re only counting items in a list, you can use `Counter` from the `collections` module for a more concise solution.
+
+```python
+from collections import Counter
+
+nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+count_dict = Counter(nums)
+print(count_dict)  # Output: Counter({1: 3, 0: 2, 2: 2, 3: 2, 4: 1})
+```
+
+---
+
+## 8. Dictionary Clear and Copy Methods
+
+### `dict.clear()`
+- Removes all items from the dictionary.
+```python
+my_dict.clear()
+print(my_dict)  # Output: {}
+```
+
+### `dict.copy()`
+- Returns a shallow copy of the dictionary.
+```python
+new_dict = my_dict.copy()
+```
+
+---
+
+## 9. Dictionary Default Value with `get`
+
+- Use `dict.get(key, default)` to safely retrieve a value. If the key is not found, it returns the `default` value.
+
+```python
+value = my_dict.get(5, "not found")  # Returns "not found" if key 5 doesn't exist
+```
+
+---
+
+## 10. Removing and Retrieving with `pop`
+
+- Use `dict.pop(key, default)` to remove a key and return its value. If the key is not found, it returns `default`.
+
+```python
+removed_value = my_dict.pop(2, "not found")
+print(removed_value)  # If key 2 exists, returns its value; otherwise, "not found"
+```
+
+---
+
+This cheat sheet provides a quick reference to core dictionary concepts and operations, covering everything from basic usage to counting techniques and checking for keys and values.
+
