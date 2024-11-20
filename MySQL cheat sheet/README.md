@@ -246,3 +246,65 @@ For ranking, cumulative sums, etc.
 
 This cheat sheet covers many of the most common SQL functions and operations used in technical interviews and day-to-day work. Use it as a quick reference for writing efficient and clear SQL queries.
 
+
+
+```sql
+-- Create a database (optional)
+CREATE DATABASE IF NOT EXISTS example_db;
+USE example_db;
+
+-- Create the first table: `employees`
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,  -- Primary Key
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    department_id INT,  -- Foreign Key to the `departments` table
+    hire_date DATE NOT NULL,
+    salary DECIMAL(10, 2) NOT NULL
+);
+
+-- Create the second table: `departments`
+CREATE TABLE departments (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,  -- Primary Key
+    department_name VARCHAR(100) NOT NULL UNIQUE   -- Unique constraint
+);
+
+-- Add a Foreign Key to `employees` referencing `departments`
+ALTER TABLE employees
+ADD CONSTRAINT fk_department
+FOREIGN KEY (department_id) REFERENCES departments(department_id)
+ON DELETE CASCADE;  -- Delete employees when the department is deleted
+
+-- Insert data into the `departments` table
+INSERT INTO departments (department_name) VALUES
+('Human Resources'),
+('Finance'),
+('Engineering'),
+('Marketing');
+
+-- Insert data into the `employees` table
+INSERT INTO employees (first_name, last_name, department_id, hire_date, salary) VALUES
+('Alice', 'Smith', 1, '2020-01-15', 50000.00),
+('Bob', 'Johnson', 2, '2019-03-22', 60000.00),
+('Charlie', 'Brown', 3, '2021-06-10', 75000.00),
+('Diana', 'Prince', 4, '2018-11-30', 65000.00),
+('Eve', 'Taylor', 3, '2022-07-19', 70000.00);
+
+-- Query all employees
+SELECT * FROM employees;
+
+-- Query employees and their department names using a JOIN
+SELECT e.first_name, e.last_name, d.department_name, e.salary
+FROM employees e
+JOIN departments d
+ON e.department_id = d.department_id;
+
+-- Add a unique constraint to the `employees` table (optional example)
+ALTER TABLE employees
+ADD CONSTRAINT unique_employee_name UNIQUE (first_name, last_name);
+
+-- Add an index on the `salary` column for faster queries (optional example)
+CREATE INDEX idx_salary ON employees(salary);
+```
+
+
